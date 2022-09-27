@@ -1,0 +1,6 @@
+/.env
+/Lib/queries.php
+/.idea
+/db/
+/lib/session.php
+/html/

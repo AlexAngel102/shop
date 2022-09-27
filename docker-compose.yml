@@ -1,0 +1,33 @@
+version: "3"
+services:
+  webserver:
+    container_name: webserver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    volumes:
+      - ./:/var/www/
+    ports:
+      - 8000:80
+  database:
+    container_name: database
+    image: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "Qwasz#112233"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    restart: always
+    environment:
+      PMA_HOST: database
+    depends_on:
+      - database

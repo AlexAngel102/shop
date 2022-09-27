@@ -1,0 +1,77 @@
+.trunc {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.rating {
+    display: flex;
+    align-items: flex-end;
+    font-size: 40px;
+    line-height: 0.75;
+}
+
+.rating.rating_set .rating__active,
+.rating.rating_set .rating__item{
+    cursor: pointer;
+}
+
+.rating__body {
+    position: relative;
+}
+
+
+
+.rating__body::before {
+    content: "☆☆☆☆☆";
+    display: block;
+    background: linear-gradient(45deg, darkred, red, rgb(255, 200, 0), yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rating__active {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.rating__active::before {
+    content: "★★★★★";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, darkred, red, rgb(255, 200, 0), yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rating__items {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.rating__item {
+    flex: 0 0 20%;
+    height: 100%;
+    opacity: 0;
+}
+
+.rating__value {
+    font-size: 50%;
+    line-height: 1;
+    padding: 0px 0px 0px 10px;
+
+}
