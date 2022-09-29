@@ -8,12 +8,16 @@ class ItemController extends Controller
 {
     public static function getItems()
     {
-        $order = self::check($_GET['order']);
-        $id = self::check($_GET['categoryId']);
-        if ($order) {
-            ItemModel::getItems($id, $order);
+        if(key_exists('id', $_GET) && self::check($_GET['id'])){
+            $id = $_GET['id'];
         } else {
-            ItemModel::getItems($id);
+            http_response_code(403);
+        }
+        if(key_exists('order', $_GET) && self::check($_GET['order'])){
+            $order = $_GET['order'];
+            return ItemModel::getItems($id, $order);
+        } else {
+            return ItemModel::getItems($id);
         }
     }
 

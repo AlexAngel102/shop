@@ -16,21 +16,20 @@
 
     <title>Shop</title>
 </head>
-<header></header>
 
-<body>
+<body class="bg-dark bg-opacity-25">
 
-<div class="m-3 p-3 bg-primary rounded-3">
-    <a class="text-white h1 p-3" href="/">Shop</a>
+<div class="m-3 p-3 bg-primary rounded-3 z-depth-1">
+    <a class="text-white h1 p-3" href="/" id="main">Shop</a>
 </div>
 
 <div class="p-3 row-cols-2 right-align">
     <div class="col-4 d-inline-flex">
         <label for="orderBy" class="col-sm-2 col-form-label col-form-label-lg text-black">Order by:</label>
-        <select class="mx-3 col-4" id="orderBy" name="order">
-            <option value="byPrice">Price</option>
-            <option value="alphabetic" selected>A-z</option>
-            <option value="byNewest">Newest</option>
+        <select class="mx-3 col-4 rounded-5 text-md-center " id="order" name="order">
+            <option value="price">Price</option>
+            <option value="name" selected>A-z</option>
+            <option value="date">Newest</option>
         </select>
     </div>
 </div>
@@ -43,6 +42,8 @@
 
         </div>
     </div>
+
+    <div class="container center" id="welcomeBlock"><h1>Welcome to shop</h1></div>
 
     <div class="row row-cols-1 row-cols-4 g-4 mx-1" id="productList">
 
@@ -61,14 +62,15 @@
 
 <template id="product">
     <div class="col">
-        <div class="card">
-            <img src="img/placeholder.svg" style="scale: 0.8"
+        <div class="card z-depth-2 bg-opacity-25 bg-light">
+            <img src="../img/placeholder.svg" style="scale: 0.8"
                  class="card-img-top" alt="...">
 
             <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Price<span><b>₴<b></span></p>
+                <h5 class="card-title"></h5>
+                <p class="card-text h5"><span><b>₴</b></span></p>
             </div>
+            <span class="right p-1" id="date"></span>
         </div>
     </div>
 </template>
@@ -82,7 +84,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img src="img/placeholder.svg" style="scale: 0.8"
+                <img src="../img/placeholder.svg" style="scale: 0.8"
                      class="card-img-top" alt="...">
 
                 <div class="card-body">
