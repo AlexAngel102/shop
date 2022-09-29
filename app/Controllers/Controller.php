@@ -9,7 +9,7 @@ class Controller
         if (isset($variable) && !empty($variable)) {
             return $variable;
         } else {
-            echo "Invalid data input";
+            return false;
             exit();
         }
     }
