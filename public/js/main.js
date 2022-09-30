@@ -41,7 +41,7 @@ function listenNav() {
 orderBy.addEventListener('change', async function () {
     let order = this.value;
     let link = new URL(window.location.href);
-    link.searchParams.set('order',order);
+    link.searchParams.set('order', order);
     history.pushState('', {}, link);
     await getItems(link, order);
 });
@@ -53,13 +53,15 @@ async function getItems(link, order) {
     }
     const url = new URL(link);
     const paramOrder = new URLSearchParams(link).get('order');
-    if (!paramOrder) {
-        if (order) {
-            url.searchParams.set('order', order);
-            history.pushState('', {}, url);
-        } else {
-            url.searchParams.append('order', 'name');
-            history.pushState('', {}, url);
+    if (`http://${url.hostname}/` != url.href) {
+        if (!paramOrder) {
+            if (order) {
+                url.searchParams.set('order', order);
+                history.pushState('', {}, url);
+            } else {
+                url.searchParams.append('order', 'name');
+                history.pushState('', {}, url);
+            }
         }
     }
     await $.get(url, {'json': "true"}, function (data) {
@@ -156,10 +158,7 @@ window.addEventListener("load", async function () {
             default:
                 selected = 1;
         }
-
-        setTimeout(() => orderBy.selectedIndex = selected, 0);
-
-
+        orderBy.selectedIndex = selected;
     } else {
         await getCategories();
     }
