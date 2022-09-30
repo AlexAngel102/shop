@@ -42,12 +42,8 @@ class ItemModel
         } else {
             usort($result, fn($a, $b) => strnatcmp($a[$column], $b[$column]) * -1);
         }
+
         return $result;
-
-    }
-
-    public static function getItem(int $id)
-    {
 
     }
 }

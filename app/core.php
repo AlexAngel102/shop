@@ -21,7 +21,10 @@ try {
 
     require_once __DIR__."/../routs/web.php";
     Router::run();
-
+//    if (http_response_code() == 205)
+//    {
+//        \App\Controllers\MainController::view();
+//    }
     require_once __DIR__."/../lib/404.php";
 }catch (Exception $e){
     error_log($e->getMessage());

@@ -13,4 +13,7 @@ Router::route("GET", '/$', 'MainController::view');
 
 Router::route("GET", '/categories', 'CategoryController::getCategories', true);
 
-Router::route("GET", '/category'.'/(\?(id=(\d+)))&(order=(\w+))$', 'ItemController::getItems', true);
+Router::route("GET", '/category'.'/(\?(id=(\d+)))&(order=(\w+))'.'&json=true', 'ItemController::getItems', true);
+
+Router::route("GET", '/category'.'/(\?(id=(\d+)))&(order=(\w+))$', 'MainController::view');
+
