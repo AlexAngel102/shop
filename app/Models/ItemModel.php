@@ -27,7 +27,7 @@ class ItemModel
         switch ($orderBy) {
             case "price":
                 $column = "price";
-                $order = 'descending';
+                $order = 'ascending';
                 break;
             case "date":
                 $column = "date";
