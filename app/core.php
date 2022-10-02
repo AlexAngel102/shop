@@ -10,7 +10,6 @@ try {
     date_default_timezone_set('Europe/Kyiv');
     require_once __DIR__."/../lib/Classes/Psr4AutoloaderClass.php";
     require_once __DIR__."/../lib/error_handler.php";
-    include "../lib/dump.php";
 
     $loader = new Psr4AutoloaderClass;
     $loader->addNamespace('App', __DIR__ . "/../app/");
@@ -21,10 +20,6 @@ try {
 
     require_once __DIR__."/../routs/web.php";
     Router::run();
-//    if (http_response_code() == 205)
-//    {
-//        \App\Controllers\MainController::view();
-//    }
     require_once __DIR__."/../lib/404.php";
 }catch (Exception $e){
     error_log($e->getMessage());

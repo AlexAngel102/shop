@@ -26,7 +26,7 @@
 
 <div class="p-3 row-cols-2 right-align ">
     <div class="col-4 d-inline-flex">
-        <label for="orderBy" class="col-sm-2 col-form-label col-form-label-lg text-black">Order by:</label>
+        <label for="orderBy" class="col-sm-2 col-form-label col-form-label h2 text-black">Order by:</label>
         <select class="mx-3 col-4 rounded-5 text-md-center z-depth-1" id="order" name="order">
             <option value="price">Price</option>
             <option value="name" selected>A-z</option>
