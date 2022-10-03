@@ -30,6 +30,7 @@ function listenNav() {
         categoriesNavElement.addEventListener("click", function (ev) {
             ev.preventDefault();
             categoriesNav.forEach((el) => el.classList.remove("text-white"));
+            orderBy.selectedIndex = 1;
             this.classList.add("text-white");
             let catUrl = ev.target.href;
             history.replaceState({}, "", catUrl);
