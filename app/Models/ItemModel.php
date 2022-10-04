@@ -7,20 +7,20 @@ use App\Classes\DBConnection;
 class ItemModel
 {
 
-    public static function getItems(int $category_id, string $orderBy = "name")
+    public static function getItems(int $category_id, string $orderBy = "name"): array|null
     {
         $query =
             "SELECT *
              FROM items
              WHERE category_id = :id
         ";
-        $statement = DB->prepare($query, [DBConnection::ATTR_CURSOR => DBConnection::CURSOR_SCROLL]);
+        $statement = DBConnection::connect()->prepare($query, [DBConnection::ATTR_CURSOR => DBConnection::CURSOR_SCROLL]);
         $statement->bindParam(':id', $category_id);
         $statement->execute();
         $result = $statement->fetchAll();
 
         if (empty($result)) {
-            return;
+            return null;
         }
 
         $order = 'ascending';
@@ -37,7 +37,7 @@ class ItemModel
                 $column = "name";
         }
 
-        if ($order == 'ascending' ) {
+        if ($order == 'ascending') {
             usort($result, fn($a, $b) => $a[$column] <=> $b[$column]);
         } else {
             usort($result, fn($a, $b) => strnatcmp($a[$column], $b[$column]) * -1);

@@ -7,7 +7,7 @@ use App\Classes\DBConnection;
 class CategoryModel
 {
 
-    public static function getCategories()
+    public static function getCategories(): array|null
     {
         $query =
             "
@@ -19,11 +19,11 @@ class CategoryModel
                 ON items.category_id = category.category_id
               GROUP BY category.category_id
         ";
-        $statement = DB->prepare($query);
+        $statement = DBConnection::connect()->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll(DBConnection::FETCH_ASSOC);
         if (empty($result)) {
-            return;
+            return null;
         }
         return $result;
     }

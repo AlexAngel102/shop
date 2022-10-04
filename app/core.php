@@ -16,8 +16,6 @@ try {
     $loader->addNamespace('App\Classes', __DIR__ . "/../lib/Classes/");
     $loader->register();
 
-    DBConnection::connect();
-
     require_once __DIR__."/../routs/web.php";
     Router::run();
     require_once __DIR__."/../lib/404.php";
